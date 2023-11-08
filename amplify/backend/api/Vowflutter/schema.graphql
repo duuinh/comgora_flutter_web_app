@@ -1,0 +1,107 @@
+enum StatusType {
+  APPROVED
+  PENDING
+  FINISHED
+  UNDEFINE
+  REJECT
+}
+
+enum CategoryType {
+  ALL
+  FOOD
+  TOOL
+  TRAVEL
+  FUN
+  EXERCISE
+  WORK
+  EDUCATION
+  GROCERY
+  SPACE
+  EVENT
+  PETS
+  FINANCE
+  CLOTHING
+  HOUSEWORK
+  WELLNESS
+  ELSE
+}
+
+enum PoolType {
+  NONE
+  ALL
+  LENDING
+  EVENTS
+  FOOD
+  COACHSURFING
+  CARPOOLING
+}
+
+type ContractLocation {
+  type: String
+  placeId: String
+  formattedAddress: String
+  lat: String
+  lng: String
+}
+
+type Contract @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  isPrivate: Boolean!
+  figures: [String]
+  title: String!
+  category: CategoryType!
+  description: String!
+  price: Int!
+  currency: String!
+  expiredDate: AWSDateTime
+  location: ContractLocation
+  vowUsers: [VowUser] @manyToMany(relationName: "ContractVowUser")
+  pdfDeal: String
+  ads: [String]
+  provider: String
+  recievers: [String]
+  poolType: PoolType!
+  status: StatusType
+  senderId: String!
+  isContractFormatOn: Boolean!
+}
+
+type Message @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  senderId: String!
+  content: String!
+  timestamp: AWSDateTime
+  status: Int
+  chatroomID: ID! @index(name: "byChatroom")
+}
+
+type Chatroom @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  vowUsers: [VowUser] @manyToMany(relationName: "ChatroomVowUser")
+  messages: [Message] @hasMany(indexName: "byChatroom", fields: ["id"])
+}
+
+type Friend @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  vowUsers: [VowUser] @manyToMany(relationName: "FriendVowUser")
+  status: StatusType!
+  sender: String!
+}
+
+type VowUser @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  firstName: String
+  lastName: String
+  birthDate: String
+  gender: String
+  phone: String
+  email: String
+  KYCLevel: Int
+  KYCState: String
+  userIdName: String
+  profile: String
+  friends: [Friend] @manyToMany(relationName: "FriendVowUser")
+  contracts: [Contract] @manyToMany(relationName: "ContractVowUser")
+  chatrooms: [Chatroom] @manyToMany(relationName: "ChatroomVowUser")
+}
+ 

@@ -1,0 +1,17 @@
+{
+  "resourceName": "vowstorage666666",
+  "policyUUID": "c06ff3fd",
+  "bucketName": "vowflutterb5ff447dde4047429e560ce91f70bed2",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "groupAccess": {}
+}

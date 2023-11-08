@@ -1,0 +1,24 @@
+{
+  "vowcard": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-vowflutter-vowcard-15827-authRole",
+      "UnauthRoleArn": "arn:aws:iam::144069510657:role/amplify-vowflutter-vowcard-15827-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::144069510657:role/amplify-vowflutter-vowcard-15827-authRole",
+      "Region": "eu-north-1",
+      "DeploymentBucketName": "amplify-vowflutter-vowcard-15827-deployment",
+      "UnauthRoleName": "amplify-vowflutter-vowcard-15827-unauthRole",
+      "StackName": "amplify-vowflutter-vowcard-15827",
+      "StackId": "arn:aws:cloudformation:eu-north-1:144069510657:stack/amplify-vowflutter-vowcard-15827/8d909d50-24cb-11ee-a4f4-0a8d869e4b30",
+      "AmplifyAppId": "d1nk8qcigorh4"
+    },
+    "categories": {
+      "auth": {
+        "Vowflutter": {},
+        "vowflutter5f7717ea": {}
+      },
+      "api": {
+        "Vowflutter": {}
+      }
+    }
+  }
+}
