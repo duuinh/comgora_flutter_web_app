@@ -1,0 +1,6 @@
+{
+  "appTitle": "comgora_flutter_web_app",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
