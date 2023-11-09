@@ -231,9 +231,9 @@ class ItemCardGrid extends StatelessWidget {
         shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 257.0, // Maximum width of each item
-          crossAxisSpacing: 10.0, // Spacing between columns
+          crossAxisSpacing: 25.0, // Spacing between columns
           mainAxisSpacing: 10.0, // Spacing between rows
-          mainAxisExtent: 360,
+          mainAxisExtent: 350,
         ),
         itemCount: 10,
         itemBuilder: (context, index) {
@@ -249,12 +249,45 @@ class ImageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset(
-          'assets/images/flutter_logo.png',
-          fit: BoxFit.cover,
-          width: double
-              .infinity, // Use double.infinity to make the image fill the width
-          height: 257,
+        Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            Stack(
+              alignment: Alignment.topLeft,
+              children: [
+                Image.network(
+                  'https://dummyimage.com/257x257/97bf7e/ffffff.jpg',
+                  fit: BoxFit.cover,
+                  width: double
+                      .infinity, // Use double.infinity to make the image fill the width
+                  height: 257,
+                ),
+                Container(
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20)),
+                  margin: EdgeInsets.all(10),
+                  child: Icon(
+                    Icons.category,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                )
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.all(8),
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.favorite,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              ),
+            ),
+          ],
         ),
         Padding(
           padding: EdgeInsets.all(10),
