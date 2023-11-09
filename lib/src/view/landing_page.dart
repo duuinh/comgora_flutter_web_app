@@ -112,7 +112,7 @@ class MenuBar extends StatelessWidget {
           child: const Text('Join'),
         ),
         IconButton(
-          icon: const Icon(Icons.settings),
+          icon: const Icon(Icons.settings_outlined),
           onPressed: () {
             // context.go(SettingsView.routeName);
           },
