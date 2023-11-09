@@ -1,11 +1,37 @@
+import 'package:comgora_flutter_web_app/src/view/landing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'sample_feature/sample_item_details_view.dart';
 import 'sample_feature/sample_item_list_view.dart';
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
+
+import 'package:go_router/go_router.dart';
+
+// GoRouter configuration
+final _router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const LandingPage(),
+    ),
+    // GoRoute(
+    //   path: SampleItemListView.routeName,
+    //   builder: (context, state) => const SampleItemListView(),
+    // ),
+    // GoRoute(
+    //   path: SampleItemDetailsView.routeName,
+    //   builder: (context, state) => const SampleItemDetailsView(),
+    // ),
+    // GoRoute(
+    //   path: SettingsView.routeName,
+    //   builder: (context, state) => const SettingsView(controller: settingsController,),
+    // ),
+  ],
+);
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -25,7 +51,7 @@ class MyApp extends StatelessWidget {
     return AnimatedBuilder(
       animation: settingsController,
       builder: (BuildContext context, Widget? child) {
-        return MaterialApp(
+        return MaterialApp.router(
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the
@@ -56,28 +82,19 @@ class MyApp extends StatelessWidget {
           // Define a light and dark color theme. Then, read the user's
           // preferred ThemeMode (light, dark, or system default) from the
           // SettingsController to display the correct theme.
-          theme: ThemeData(),
-          darkTheme: ThemeData.dark(),
-          themeMode: settingsController.themeMode,
-
-          // Define a function to handle named routes in order to support
-          // Flutter web url navigation and deep linking.
-          onGenerateRoute: (RouteSettings routeSettings) {
-            return MaterialPageRoute<void>(
-              settings: routeSettings,
-              builder: (BuildContext context) {
-                switch (routeSettings.name) {
-                  case SettingsView.routeName:
-                    return SettingsView(controller: settingsController);
-                  case SampleItemDetailsView.routeName:
-                    return const SampleItemDetailsView();
-                  case SampleItemListView.routeName:
-                  default:
-                    return const SampleItemListView();
-                }
-              },
-            );
-          },
+          theme: ThemeData(
+            primarySwatch: Colors.green,
+            textTheme: GoogleFonts.poppinsTextTheme(
+              Theme.of(context).textTheme,
+            ),
+            colorScheme: ColorScheme.fromSeed(
+                seedColor: Color.fromARGB(1, 108, 201, 92)),
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+            useMaterial3: true,
+          ),
+          // darkTheme: ThemeData.dark(),
+          // themeMode: settingsController.themeMode,
+          routerConfig: _router,
         );
       },
     );

@@ -20,6 +20,8 @@ dependencies:
   amplify_api: ^1.2.0
   amplify_auth_cognito: ^1.2.0
   amplify_storage_s3: ^1.4.0
+  google_fonts: ^6.0.0
+  flutter_svg: ^2.0.9
 
 dev_dependencies:
   flutter_test:
@@ -36,3 +38,6 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
+    - assets/icons/
+    - assets/icons/landing_page/
+
