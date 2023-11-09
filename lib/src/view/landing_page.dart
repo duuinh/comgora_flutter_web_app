@@ -11,6 +11,7 @@ class LandingPage extends StatelessWidget {
     return DefaultTabController(
         length: 12, // Set the number of tabs as needed
         child: Scaffold(
+          backgroundColor: Colors.white,
           body: CustomScrollView(
             slivers: [
               SliverAppBar(
@@ -26,6 +27,7 @@ class LandingPage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Column(
                         children: [
+                          SizedBox(height: 30),
                           CategoryTabBar(),
                           Container(
                               padding: EdgeInsets.symmetric(
