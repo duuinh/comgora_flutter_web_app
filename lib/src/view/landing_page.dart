@@ -70,6 +70,7 @@ class MenuBar extends StatelessWidget {
           onPressed: () {},
           child: const Text('Post Ads'),
         ),
+        PoolSelectDropdownButton(),
         Container(
           height: 50,
           width: 300,
@@ -117,6 +118,53 @@ class MenuBar extends StatelessWidget {
           },
         ),
       ]),
+    );
+  }
+}
+
+class PoolSelectDropdownButton extends StatefulWidget {
+  @override
+  _DropdownButtonState createState() => _DropdownButtonState();
+}
+
+class _DropdownButtonState extends State<PoolSelectDropdownButton> {
+  String selectedValue = 'All Pool'; // Initial value
+  final Map<String, IconData> valueIconMap = {
+    'All Pool': Icons.public,
+    'Private': Icons.lock,
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        DropdownButton(
+          value: selectedValue,
+          icon: Icon(Icons.arrow_drop_down), // Icon for the dropdown button
+          onChanged: (String? newValue) {
+            setState(() {
+              selectedValue = newValue!;
+            });
+          },
+          underline: Container(),
+          items: <String>['All Pool', 'Private']
+              .map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                  color: Colors.lightGreen,
+                ),
+                child: Icon(valueIconMap[value], color: Colors.black, size: 25),
+              ),
+            );
+          }).toList(),
+        ),
+        SizedBox(width: 20),
+        Text(selectedValue)
+      ],
     );
   }
 }
