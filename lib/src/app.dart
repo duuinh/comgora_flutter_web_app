@@ -1,4 +1,5 @@
 import 'package:comgora_flutter_web_app/src/presentation/view/lending_page/lending_page.dart';
+import 'package:comgora_flutter_web_app/src/presentation/view/profile_page/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -19,10 +20,10 @@ final _router = GoRouter(
       path: '/',
       builder: (context, state) => const LendingPage(),
     ),
-    // GoRoute(
-    //   path: SampleItemListView.routeName,
-    //   builder: (context, state) => const SampleItemListView(),
-    // ),
+    GoRoute(
+      path: '/profile',
+      builder: (context, state) => const ProfilePage(),
+    ),
     // GoRoute(
     //   path: SampleItemDetailsView.routeName,
     //   builder: (context, state) => const SampleItemDetailsView(),

@@ -73,7 +73,7 @@ IconData categoryToIconData(CategoryType category) {
     case CategoryType.FINANCE:
       return Icons.money;
     case CategoryType.CLOTHING:
-      return Icons.shopping_bag;
+      return Icons.checkroom;
     case CategoryType.HOUSEWORK:
       return Icons.house;
     case CategoryType.ELSE:
