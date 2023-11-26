@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 class ImageCardWidget extends StatelessWidget {
   const ImageCardWidget({
     super.key,
-    // required this.contractVowUser,
+    required this.contractVowUser,
   });
 
-  // final ContractVowUser contractVowUser;
+  final ContractVowUser contractVowUser;
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +63,8 @@ class ImageCardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    // contractVowUser.contract.title,
-                    'Title',
+                    contractVowUser.contract.title,
+                    // 'Title',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,

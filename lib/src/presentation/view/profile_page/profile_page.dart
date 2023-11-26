@@ -403,49 +403,49 @@ class ItemCardGrid extends ConsumerStatefulWidget {
 }
 
 class ItemCardGridState extends ConsumerState<ItemCardGrid> {
-  // @override
-  // Widget build(BuildContext context) {
-  //   return ref.watch(poolContractsStateNotifierProvider).maybeWhen(
-  //       success: (contractVowUsers) {
-  //         return Padding(
-  //           padding: EdgeInsets.all(20),
-  //           child: GridView.extent(
-  //             maxCrossAxisExtent: 257.0, // Maximum width of each item
-  //             crossAxisSpacing: 25.0, // Spacing between columns
-  //             mainAxisSpacing: 10.0, // Spacing between rows
-  //             // mainAxisExtent: 350,
-  //             children: contractVowUsers
-  //                 .map((contractVowUser) => ImageCardWidget(
-  //                       contractVowUser: contractVowUser,
-  //                     ))
-  //                 .toList(),
-  //           ),
-  //         );
-  //       },
-  //       loading: () => const Center(
-  //             child: CircularProgressIndicator(color: Colors.lightGreen),
-  //           ),
-  //       orElse: () => const Text('Else'),
-  //       init: () => const Text('Init'),
-  //       error: (e) => Text(e.toString()));
-  // }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(20),
-      child: GridView.builder(
-        shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 257.0, // Maximum width of each item
-          crossAxisSpacing: 25.0, // Spacing between columns
-          mainAxisSpacing: 10.0, // Spacing between rows
-          mainAxisExtent: 350,
-        ),
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return ImageCardWidget();
+    return ref.watch(poolContractsStateNotifierProvider).maybeWhen(
+        success: (contractVowUsers) {
+          return Padding(
+            padding: EdgeInsets.all(20),
+            child: GridView.extent(
+              maxCrossAxisExtent: 257.0, // Maximum width of each item
+              crossAxisSpacing: 25.0, // Spacing between columns
+              mainAxisSpacing: 10.0, // Spacing between rows
+              // mainAxisExtent: 350,
+              children: contractVowUsers
+                  .map((contractVowUser) => ImageCardWidget(
+                        contractVowUser: contractVowUser,
+                      ))
+                  .toList(),
+            ),
+          );
         },
-      ),
-    );
+        loading: () => const Center(
+              child: CircularProgressIndicator(color: Colors.lightGreen),
+            ),
+        orElse: () => const Text('Else'),
+        init: () => const Text('Init'),
+        error: (e) => Text(e.toString()));
   }
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Container(
+  //     padding: EdgeInsets.all(20),
+  //     child: GridView.builder(
+  //       shrinkWrap: true,
+  //       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+  //         maxCrossAxisExtent: 257.0, // Maximum width of each item
+  //         crossAxisSpacing: 25.0, // Spacing between columns
+  //         mainAxisSpacing: 10.0, // Spacing between rows
+  //         mainAxisExtent: 350,
+  //       ),
+  //       itemCount: 10,
+  //       itemBuilder: (context, index) {
+  //         return ImageCardWidget();
+  //       },
+  //     ),
+  //   );
+  // }
 }
