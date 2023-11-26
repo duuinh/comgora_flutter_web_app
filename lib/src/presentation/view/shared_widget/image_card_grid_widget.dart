@@ -19,10 +19,12 @@ class _ItemCardGridWidgetState extends ConsumerState<ItemCardGridWidget> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     Future(() {
-      ref
-          .read(poolViewModelProvider(
-              PoolCategoryType(widget.poolType, widget.categoryType)))
-          .init();
+      if (mounted) {
+        ref
+            .read(poolViewModelProvider(
+                PoolCategoryType(widget.poolType, widget.categoryType)))
+            .init();
+      }
     });
   }
 

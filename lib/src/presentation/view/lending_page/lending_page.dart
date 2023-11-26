@@ -94,7 +94,7 @@ class _TabViewState extends ConsumerState<TabView>
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               )),
           ConstrainedBox(
-              constraints: BoxConstraints(maxHeight: 1000),
+              constraints: BoxConstraints(maxHeight: 700),
               child: TabBarView(
                   children: CategoryType.values.map((category) {
                 final poolType = ref.watch(poolTypeProvider);
