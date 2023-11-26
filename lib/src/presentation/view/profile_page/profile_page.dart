@@ -1,19 +1,9 @@
-import 'package:comgora_flutter_web_app/models/ContractVowUser.dart';
 import 'package:comgora_flutter_web_app/models/ModelProvider.dart';
-import 'package:comgora_flutter_web_app/src/domain/model/feature_type.dart';
-import 'package:comgora_flutter_web_app/src/presentation/view/lending_page/widget/banner_widget.dart';
 import 'package:comgora_flutter_web_app/src/presentation/view/lending_page/widget/menu_bar_widget.dart';
 import 'package:comgora_flutter_web_app/src/presentation/view/shared_widget/footer_widget.dart';
-import 'package:comgora_flutter_web_app/src/presentation/view/shared_widget/image_card_widget.dart';
-import 'package:comgora_flutter_web_app/src/presentation/view_moldel/pool/pool_viewmodel.dart';
+import 'package:comgora_flutter_web_app/src/presentation/view/shared_widget/image_card_grid_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
-
-import '../../../../models/PoolType.dart';
-import '../../../settings/settings_view.dart';
-import '../../view_moldel/pool/pool_contract_viewmodel.dart';
 
 final poolTypeProvider = StateProvider<PoolType>((ref) => PoolType.ALL);
 
@@ -365,9 +355,9 @@ class _TabViewState extends ConsumerState<TabView>
           ConstrainedBox(
               constraints: BoxConstraints(maxHeight: 1000),
               child: TabBarView(children: [
-                ItemCardGrid(CategoryType.ALL, PoolType.ALL),
-                ItemCardGrid(CategoryType.ALL, PoolType.ALL),
-                ItemCardGrid(CategoryType.ALL, PoolType.ALL)
+                ItemCardGridWidget(CategoryType.ALL, PoolType.ALL),
+                ItemCardGridWidget(CategoryType.ALL, PoolType.ALL),
+                ItemCardGridWidget(CategoryType.ALL, PoolType.ALL)
               ])),
         ],
       ),
@@ -391,45 +381,5 @@ class TabItem extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class ItemCardGrid extends ConsumerStatefulWidget {
-  final CategoryType categoryType;
-  final PoolType poolType;
-  const ItemCardGrid(this.categoryType, this.poolType, {super.key});
-  @override
-  ConsumerState<ItemCardGrid> createState() => ItemCardGridState();
-}
-
-class ItemCardGridState extends ConsumerState<ItemCardGrid> {
-  @override
-  Widget build(BuildContext context) {
-    return ref.watch(poolContractsStateNotifierProvider).maybeWhen(
-        success: (contractVowUsers) {
-          return Padding(
-            padding: EdgeInsets.all(20),
-            child: GridView.builder(
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 257.0, // Maximum width of each item
-                crossAxisSpacing: 25.0, // Spacing between columns
-                mainAxisSpacing: 10.0, // Spacing between rows
-                mainAxisExtent: 350,
-              ),
-              itemCount: contractVowUsers.length,
-              itemBuilder: (context, index) {
-                return ImageCardWidget(
-                    contractVowUser: contractVowUsers[index]);
-              },
-            ),
-          );
-        },
-        loading: () => const Center(
-              child: CircularProgressIndicator(color: Colors.lightGreen),
-            ),
-        orElse: () => const Text('Else'),
-        init: () => const Text('Init'),
-        error: (e) => Text(e.toString()));
   }
 }
