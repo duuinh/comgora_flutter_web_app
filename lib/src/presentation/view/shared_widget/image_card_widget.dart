@@ -64,17 +64,19 @@ class ImageCardWidget extends StatelessWidget {
                 children: [
                   Text(
                     contractVowUser.contract.title,
-                    // 'Title',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),
                   ),
                   Text(
-                    'Location',
+                    contractVowUser.contract.location?.formattedAddress ??
+                        'Unknown Location',
                     style: TextStyle(fontSize: 14),
                   ),
-                  Text('Price', style: TextStyle(fontSize: 18)),
+                  Text(
+                      '${contractVowUser.contract.price} ${contractVowUser.contract.currency}',
+                      style: TextStyle(fontSize: 18)),
                 ],
               ),
               Row(
