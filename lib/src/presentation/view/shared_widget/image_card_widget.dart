@@ -1,4 +1,5 @@
 import 'package:comgora_flutter_web_app/models/ModelProvider.dart';
+import 'package:comgora_flutter_web_app/src/domain/model/feature_type.dart';
 import 'package:flutter/material.dart';
 
 class ImageCardWidget extends StatelessWidget {
@@ -32,8 +33,8 @@ class ImageCardWidget extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20)),
                   margin: const EdgeInsets.all(10),
-                  child: const Icon(
-                    Icons.category,
+                  child: Icon(
+                    categoryToIconData(contractVowUser.contract.category),
                     color: Colors.black,
                     size: 30,
                   ),
@@ -71,7 +72,7 @@ class ImageCardWidget extends StatelessWidget {
                   ),
                   Text(
                     contractVowUser.contract.location?.formattedAddress ??
-                        'Unknown Location',
+                        'Unknown location',
                     style: TextStyle(fontSize: 14),
                   ),
                   Text(
