@@ -90,7 +90,7 @@ class _TabViewState extends ConsumerState<TabView>
               padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
               alignment: Alignment.centerLeft,
               child: Text(
-                'You may interest',
+                'You may be interested',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               )),
           ConstrainedBox(
