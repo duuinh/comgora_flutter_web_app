@@ -1,7 +1,8 @@
-import 'package:comgora_flutter_web_app/src/view/landing_page.dart';
+import 'package:comgora_flutter_web_app/src/presentation/view/lending_page/lending_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'sample_feature/sample_item_details_view.dart';
@@ -16,7 +17,7 @@ final _router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const LandingPage(),
+      builder: (context, state) => const LendingPage(),
     ),
     // GoRoute(
     //   path: SampleItemListView.routeName,
@@ -34,7 +35,7 @@ final _router = GoRouter(
 );
 
 /// The Widget that configures your application.
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({
     super.key,
     required this.settingsController,
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
   final SettingsController settingsController;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // Glue the SettingsController to the MaterialApp.
     //
     // The AnimatedBuilder Widget listens to the SettingsController for changes.

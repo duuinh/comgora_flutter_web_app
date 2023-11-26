@@ -16,12 +16,16 @@ dependencies:
     sdk: flutter
   go_router: ^12.1.0
   amplify_flutter: ^1.2.0
-  amplify_datastore: ^1.2.0
   amplify_api: ^1.2.0
   amplify_auth_cognito: ^1.2.0
   amplify_storage_s3: ^1.4.0
   google_fonts: ^6.0.0
   flutter_svg: ^2.0.9
+  flutter_riverpod: ^2.4.5
+  aws_common: ^0.6.1
+  freezed_annotation: ^2.4.1
+  build_runner: ^2.4.6
+  stack_trace: ^1.11.0
 
 dev_dependencies:
   flutter_test:
