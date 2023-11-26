@@ -1,0 +1,21 @@
+{
+    "appName": "vowflutter",
+    "roleName": "pinpointLambdaRoleee7fad5b",
+    "cloudformationPolicyName": "cloudformationPolicyee7fad5b",
+    "cloudWatchPolicyName": "cloudWatchPolicyee7fad5b",
+    "pinpointPolicyName": "pinpointPolicyee7fad5b",
+    "authPolicyName": "pinpoint_amplify_ee7fad5b",
+    "unauthPolicyName": "pinpoint_amplify_ee7fad5b",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}
