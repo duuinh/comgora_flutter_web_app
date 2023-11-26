@@ -409,16 +409,19 @@ class ItemCardGridState extends ConsumerState<ItemCardGrid> {
         success: (contractVowUsers) {
           return Padding(
             padding: EdgeInsets.all(20),
-            child: GridView.extent(
-              maxCrossAxisExtent: 257.0, // Maximum width of each item
-              crossAxisSpacing: 25.0, // Spacing between columns
-              mainAxisSpacing: 10.0, // Spacing between rows
-              // mainAxisExtent: 350,
-              children: contractVowUsers
-                  .map((contractVowUser) => ImageCardWidget(
-                        contractVowUser: contractVowUser,
-                      ))
-                  .toList(),
+            child: GridView.builder(
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 257.0, // Maximum width of each item
+                crossAxisSpacing: 25.0, // Spacing between columns
+                mainAxisSpacing: 10.0, // Spacing between rows
+                mainAxisExtent: 350,
+              ),
+              itemCount: contractVowUsers.length,
+              itemBuilder: (context, index) {
+                return ImageCardWidget(
+                    contractVowUser: contractVowUsers[index]);
+              },
             ),
           );
         },
@@ -429,23 +432,4 @@ class ItemCardGridState extends ConsumerState<ItemCardGrid> {
         init: () => const Text('Init'),
         error: (e) => Text(e.toString()));
   }
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Container(
-  //     padding: EdgeInsets.all(20),
-  //     child: GridView.builder(
-  //       shrinkWrap: true,
-  //       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-  //         maxCrossAxisExtent: 257.0, // Maximum width of each item
-  //         crossAxisSpacing: 25.0, // Spacing between columns
-  //         mainAxisSpacing: 10.0, // Spacing between rows
-  //         mainAxisExtent: 350,
-  //       ),
-  //       itemCount: 10,
-  //       itemBuilder: (context, index) {
-  //         return ImageCardWidget();
-  //       },
-  //     ),
-  //   );
-  // }
 }
