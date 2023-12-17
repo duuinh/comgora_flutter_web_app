@@ -12,6 +12,7 @@ jobs:
       
       - name: Create amplifyconfiguration.dart file
         run: |
+          cd ./lib
           touch amplifyconfiguration.dart
           echo ${{ secrets.AMPLIFY_CONFIG }} >> amplifyconfiguration.dart
           
