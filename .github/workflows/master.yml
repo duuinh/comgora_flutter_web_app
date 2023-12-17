@@ -9,11 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
+      
+      - name: Create amplifyconfiguration.dart file
+        run: |
+          touch amplifyconfiguration.dart
+          echo ${{ secrets.AMPLIFY_CONFIG }} >> amplifyconfiguration.dart
+          
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-
+          
       - name: 🌍 Enable Web
         run: flutter config --enable-web
 
